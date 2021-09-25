@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="P1_MOV.asm" />
+    <MASM Include="P2_MOV.asm" />
+    <MASM Include="P3_MOV.asm" />
+    <MASM Include="P4_MOV.asm" />
+    <MASM Include="P7_SUB.asm" />
+    <MASM Include="P5_ADD.asm" />
+    <MASM Include="p6_ADD_p2.asm" />
+    <MASM Include="p8_Mult.asm" />
+    <MASM Include="p9_Multp2.asm" />
+    <MASM Include="p10_Multp3.asm" />
+    <MASM Include="p11_DIV.asm" />
+    <MASM Include="p12_DIV_P2.asm" />
+    <MASM Include="p13_DIV_P3.asm" />
+    <MASM Include="p14_Impresion.asm" />
+    <MASM Include="TareaU2.asm" />
+    <MASM Include="p17_Promedio3num.asm" />
+    <MASM Include="p18_Xalcuadrado.asm" />
+    <MASM Include="P16_LecturaNumero.asm" />
+    <MASM Include="Tarea_Prog_3_sumadenumeros.asm" />
+    <MASM Include="P19_IntercambioValores.asm" />
+    <MASM Include="P20_SaltosIncondicionales.asm" />
+    <MASM Include="P21_SaltoCondicional_Parte1.asm" />
+    <MASM Include="P22_SaltoCondicional_Parte2.asm" />
+    <MASM Include="P23_SaltoCondicional_Parte3.asm" />
+    <MASM Include="P24_SaltoCondicionales_Ej.asm" />
+  </ItemGroup>
+</Project>
