@@ -44,5 +44,12 @@
     <MASM Include="T17_sumados_numeros_mayor.asm" />
     <MASM Include="T18_Tabla de multiplicar.asm" />
     <MASM Include="T19_Calificaciones.asm" />
+    <MASM Include="P32_CiclosAnidados_parte1.asm" />
+    <MASM Include="P33_CiclosAnidados_parte2.asm" />
+    <MASM Include="P34_CiclosAnidados_parte3.asm" />
+    <MASM Include="P35_UsoVariables_parte1.asm" />
+    <MASM Include="P36_UsoVariables_parte2.asm" />
+    <MASM Include="P37_DetenerCicloUsuario.asm" />
+    <MASM Include="P38_SwitchCaseSimulado.asm" />
   </ItemGroup>
 </Project>
