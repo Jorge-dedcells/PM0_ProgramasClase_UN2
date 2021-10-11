@@ -29,5 +29,20 @@
     <MASM Include="P22_SaltoCondicional_Parte2.asm" />
     <MASM Include="P23_SaltoCondicional_Parte3.asm" />
     <MASM Include="P24_SaltoCondicionales_Ej.asm" />
+    <MASM Include="Tarea_IMC.asm" />
+    <MASM Include="Tarea_Leer_N_numeros.asm" />
+    <MASM Include="Tarea_Mat_2x2.asm" />
+    <MASM Include="Tarea_vel_masa.asm" />
+    <MASM Include="Fibonacci.asm" />
+    <MASM Include="P25_SaltoCond_Ejemplo.asm" />
+    <MASM Include="P26_SaltosComoCiclos.asm" />
+    <MASM Include="P27_Ciclos_Parte2.asm" />
+    <MASM Include="P28_CicloEjemplo.asm" />
+    <MASM Include="P29_TablaMultiplicar.asm" />
+    <MASM Include="P30_LOOP_.asm" />
+    <MASM Include="Tarea_numero_primo.asm" />
+    <MASM Include="T17_sumados_numeros_mayor.asm" />
+    <MASM Include="T18_Tabla de multiplicar.asm" />
+    <MASM Include="T19_Calificaciones.asm" />
   </ItemGroup>
 </Project>

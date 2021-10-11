@@ -1,16 +1,17 @@
-Microsoft (R) Macro Assembler Version 14.29.30133.0	    09/19/21 23:11:24
-suma de 4 numero					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/10/21 01:16:28
+velocidad de un objet					     Page 1 - 1
 
 
-				TITLE  suma de 4 numeros 
+				TITLE velocidad de un objeto
 
 				;DESCRPICIÓN 
-				;Objetivo: Lectura de números por consola
+				;Objetivo: Explicación
 				;
 				; Autore(s):
 				;         Mtro. Alejandro Garcia
 				;		  Su Nombre.! 
 				;         
+
 				; Semestre: 8vo Semestre ISC 
 				;FIN DESCRIPCIÓN
 
@@ -35,51 +36,50 @@ Microsoft (R) Macro Assembler Version 14.29.30133.0	    09/19/21 23:11:24
 
  00000000			.data
 				; Área de Declaración de Variables
- 00000000 69 6E 74 72 6F	Mensaje db "introducir numero: ",0
-	   64 75 63 69 72
-	   20 6E 75 6D 65
-	   72 6F 3A 20 00
- 00000014 65 6C 20 72 65	respuesta db "el resultado es: ",0
-	   73 75 6C 74 61
-	   64 6F 20 65 73
+ 00000000 4C 61 20 76 65	resp db "La velocidad es: ",0
+	   6C 6F 63 69 64
+	   61 64 20 65 73
 	   3A 20 00
+ 00000012 44 61 6D 65 20	inputdist db "Dame la distancia: ", 0
+	   6C 61 20 64 69
+	   73 74 61 6E 63
+	   69 61 3A 20 00
+ 00000026 44 61 6D 65 20	inputti   db "Dame el tiempo: ",0 
+	   65 6C 20 74 69
+	   65 6D 70 6F 3A
+	   20 00
+
 
  00000000			.code
 
- 00000000				tarea PROC	
+ 00000000				velocidad PROC	
 						;Lógica del Programa
- 00000000  BA 00000000 R			mov edx,offset Mensaje 
- 00000005  E8 00000000 E	        call writestring
- 0000000A  E8 00000000 E	        call readint
- 0000000F  BB 00000000		        mov ebx,0
- 00000014  B9 0000000A		        mov ecx,10
+ 00000000  BA 00000026 R			mov edx, offset inputti
+ 00000005  E8 00000000 E			call writestring
+ 0000000A  E8 00000000 E			call readint
+ 0000000F  8B D8				mov ebx, eax
 
- 00000019  BA 00000000		       mov edx, 0
- 0000001E  F7 F1		       div ecx
- 00000020  03 DA		       add ebx, edx
+ 00000011  BA 00000012 R			mov edx, offset inputdist
+ 00000016  E8 00000000 E			call writestring
+ 0000001B  E8 00000000 E			call readint
+						
+ 00000020  BA 00000000				mov edx, 0
+ 00000025  F7 F3				div ebx
 
- 00000022  BA 00000000		       mov edx, 0
- 00000027  F7 F1		       div ecx
- 00000029  03 DA		       add ebx, edx
+ 00000027  BA 00000000 R			mov edx, offset resp
+ 0000002C  E8 00000000 E			call writestring
+ 00000031  E8 00000000 E			call writeint
+						
 
- 0000002B  BA 00000000		       mov edx, 0
- 00000030  F7 F1		       div ecx
- 00000032  03 DA		       add ebx, edx
-
- 00000034  BA 00000000		       mov edx, 0
- 00000039  F7 F1		       div ecx
- 0000003B  03 DA		       add ebx, edx
-
-
- 0000003D  BA 00000014 R	        mov edx,offset respuesta
- 00000042  E8 00000000 E	        call writestring
- 00000047  8B C3		        mov eax,ebx
- 00000049  E8 00000000 E	        call writeint
-						exit		
- 00000055				tarea ENDP
-					END tarea
-Microsoft (R) Macro Assembler Version 14.29.30133.0	    09/19/21 23:11:24
-suma de 4 numero					     Symbols 2 - 1
+						
+ 00000036					salir: 
+						exit	
+					
+ 0000003D				velocidad ENDP
+					
+					END velocidad
+Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/10/21 01:16:28
+velocidad de un objet					     Symbols 2 - 1
 
 
 
@@ -172,8 +172,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000026 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000055 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000037 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000003D Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -282,7 +282,8 @@ WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
-tarea  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000055 Public STDCALL
+velocidad  . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000003D Public STDCALL
+  salir  . . . . . . . . . . . .	L Near	 00000036 _TEXT	
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 
 
@@ -398,7 +399,6 @@ MB_YESNOCANCEL . . . . . . . . .	Number	 00000003h
 MB_YESNO . . . . . . . . . . . .	Number	 00000004h   
 MENU_EVENT . . . . . . . . . . .	Number	 00000008h   
 MOUSE_EVENT  . . . . . . . . . .	Number	 00000002h   
-Mensaje  . . . . . . . . . . . .	Byte	 00000000 _DATA	
 MessageBox . . . . . . . . . . .	Text   	 MessageBoxA
 NULL . . . . . . . . . . . . . .	Number	 00000000h   
 NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
@@ -507,6 +507,8 @@ cyan . . . . . . . . . . . . . .	Number	 00000003h
 exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
 gray . . . . . . . . . . . . . .	Number	 00000008h   
 green  . . . . . . . . . . . . .	Number	 00000002h   
+inputdist  . . . . . . . . . . .	Byte	 00000012 _DATA	
+inputti  . . . . . . . . . . . .	Byte	 00000026 _DATA	
 lightBlue  . . . . . . . . . . .	Number	 00000009h   
 lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
 lightGray  . . . . . . . . . . .	Number	 00000007h   
@@ -515,7 +517,7 @@ lightMagenta . . . . . . . . . .	Number	 0000000Dh
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
 red  . . . . . . . . . . . . . .	Number	 00000004h   
-respuesta  . . . . . . . . . . .	Byte	 00000014 _DATA	
+resp . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   
