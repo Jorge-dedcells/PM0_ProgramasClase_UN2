@@ -1,21 +1,21 @@
-Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/10/21 01:16:28
-velocidad de un objet					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/13/21 19:42:47
+T25_numbin_a_dec.asm					     Page 1 - 1
 
 
-				TITLE velocidad de un objeto
-
-				;DESCRPICIÓN 
+				TITLE 
+				
+				;DESCRPICIÓN
 				;Objetivo: Explicación
 				;
 				; Autore(s):
-				;         Mtro. Alejandro Garcia
-				;		  Su Nombre.! 
-				;         
-
-				; Semestre: 8vo Semestre ISC 
+				; Mtro. Alejandro Garcia
+				; Su Nombre.!
+				;
+				
+				; Semestre: 8vo Semestre ISC
 				;FIN DESCRIPCIÓN
-
-				INCLUDE Irvine32.inc  
+				
+				INCLUDE Irvine32.inc
 			      C ; Include file for Irvine32.lib             (Irvine32.inc)
 			      C 
 			      C ;OPTION CASEMAP:NONE		; optional: make identifiers case-sensitive
@@ -33,53 +33,85 @@ Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/10/21 01:16:28
 			      C .NOLIST
 			      C .LIST
 			      C 
-
+				
  00000000			.data
 				; Área de Declaración de Variables
- 00000000 4C 61 20 76 65	resp db "La velocidad es: ",0
-	   6C 6F 63 69 64
-	   61 64 20 65 73
+ 00000000  00000009 [		arr byte 9 dup(0)
+	    00
+	   ]
+ 00000009 44 61 6D 65 20	mensaje db "Dame la longitud maxima ", 0
+	   6C 61 20 6C 6F
+	   6E 67 69 74 75
+	   64 20 6D 61 78
+	   69 6D 61 20 00
+ 00000022 45 6C 20 6E 75	mensaje2 db "El numero formado es: ",0
+	   6D 65 72 6F 20
+	   66 6F 72 6D 61
+	   64 6F 20 65 73
 	   3A 20 00
- 00000012 44 61 6D 65 20	inputdist db "Dame la distancia: ", 0
-	   6C 61 20 64 69
-	   73 74 61 6E 63
-	   69 61 3A 20 00
- 00000026 44 61 6D 65 20	inputti   db "Dame el tiempo: ",0 
-	   65 6C 20 74 69
-	   65 6D 70 6F 3A
-	   20 00
-
-
+ 00000039 00000000		total dword 0
+ 0000003D 00000001		sec2 dword 1
+				
+				
  00000000			.code
-
- 00000000				velocidad PROC	
-						;Lógica del Programa
- 00000000  BA 00000026 R			mov edx, offset inputti
- 00000005  E8 00000000 E			call writestring
- 0000000A  E8 00000000 E			call readint
- 0000000F  8B D8				mov ebx, eax
-
- 00000011  BA 00000012 R			mov edx, offset inputdist
- 00000016  E8 00000000 E			call writestring
- 0000001B  E8 00000000 E			call readint
-						
- 00000020  BA 00000000				mov edx, 0
- 00000025  F7 F3				div ebx
-
- 00000027  BA 00000000 R			mov edx, offset resp
- 0000002C  E8 00000000 E			call writestring
- 00000031  E8 00000000 E			call writeint
-						
-
-						
- 00000036					salir: 
-						exit	
-					
- 0000003D				velocidad ENDP
-					
-					END velocidad
-Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/10/21 01:16:28
-velocidad de un objet					     Symbols 2 - 1
+				
+ 00000000			bin PROC
+				
+				;Lógica del Programa
+				  
+ 00000000  BA 00000000 R	  mov edx, offset arr
+ 00000005  B9 00000009		  mov ecx, sizeof arr
+				
+ 0000000A  E8 00000000 E	 call readstring
+ 0000000F  8B C8		 mov ecx, eax
+ 00000011  49			 dec ecx
+ 00000012  BB 00000001		 mov ebx, 1
+				
+				
+				
+ 00000017			 ciclo:
+ 00000017  E8 00000000 E	    call crlf
+ 0000001C  B8 00000000		     mov eax, 0
+ 00000021  8B F9		     mov edi, ecx
+ 00000023  8A 81 00000000 R	     mov al,arr[ecx]
+				
+ 00000029  0F B6 C0		     movzx eax, al
+ 0000002C  83 E8 30		     sub eax, 48
+ 0000002F  50			     push eax
+ 00000030  8B F9		     mov edi, ecx
+ 00000032  A1 0000003D R	     mov eax, sec2
+ 00000037  F7 E3		     mul ebx
+ 00000039  A3 0000003D R	     mov sec2, eax
+				
+ 0000003E  58			     pop eax
+ 0000003F  F7 25 0000003D R	     mul sec2
+ 00000045  01 05 00000039 R	     add total, eax
+				
+ 0000004B  8B CF		     mov ecx, edi
+ 0000004D  49			     dec ecx
+ 0000004E  BB 00000002		     mov ebx, 2
+				     
+ 00000053  83 F9 FF		     cmp ecx, -1
+ 00000056  7F BF		     jg ciclo
+				
+				
+				
+ 00000058  BA 00000022 R	  mov edx, offset mensaje2
+ 0000005D  E8 00000000 E	  call writestring
+ 00000062  A1 00000039 R	  mov eax, total
+ 00000067  E8 00000000 E	  call writedec
+				
+				
+				
+				
+				   
+				
+				
+				exit
+ 00000073			bin ENDP
+				END bin
+Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/13/21 19:42:47
+T25_numbin_a_dec.asm					     Symbols 2 - 1
 
 
 
@@ -172,8 +204,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000037 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000003D Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000041 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000073 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -280,10 +312,10 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+bin  . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000073 Public STDCALL
+  ciclo  . . . . . . . . . . . .	L Near	 00000017 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
-velocidad  . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000003D Public STDCALL
-  salir  . . . . . . . . . . . .	L Near	 00000036 _TEXT	
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 
 
@@ -500,6 +532,7 @@ VK_UP  . . . . . . . . . . . . .	Number	 00000026h
 WINDOW_BUFFER_SIZE_EVENT . . . .	Number	 00000004h   
 WriteConsoleOutputCharacter  . .	Text   	 WriteConsoleOutputCharacterA
 WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
+arr  . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
 brown  . . . . . . . . . . . . .	Number	 00000006h   
@@ -507,8 +540,6 @@ cyan . . . . . . . . . . . . . .	Number	 00000003h
 exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
 gray . . . . . . . . . . . . . .	Number	 00000008h   
 green  . . . . . . . . . . . . .	Number	 00000002h   
-inputdist  . . . . . . . . . . .	Byte	 00000012 _DATA	
-inputti  . . . . . . . . . . . .	Byte	 00000026 _DATA	
 lightBlue  . . . . . . . . . . .	Number	 00000009h   
 lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
 lightGray  . . . . . . . . . . .	Number	 00000007h   
@@ -516,8 +547,11 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
+mensaje2 . . . . . . . . . . . .	Byte	 00000022 _DATA	
+mensaje  . . . . . . . . . . . .	Byte	 00000009 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
-resp . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
+sec2 . . . . . . . . . . . . . .	DWord	 0000003D _DATA	
+total  . . . . . . . . . . . . .	DWord	 00000039 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   

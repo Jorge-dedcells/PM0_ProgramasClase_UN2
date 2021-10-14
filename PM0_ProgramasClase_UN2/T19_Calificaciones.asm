@@ -30,8 +30,8 @@ calift PROC
    mov edx, offset mensajecal
    call writestring
    call readint
-   push ecx
    mov ecx, eax 
+   push ecx
    mov ebx, 0
    
    ciclo:
@@ -56,8 +56,10 @@ calift PROC
         mov edx, offset mesreprobado
 
     Next:
+         call crlf
          call writestring
-
+         call crlf
+         call crlf
 
 exit
 calift ENDP

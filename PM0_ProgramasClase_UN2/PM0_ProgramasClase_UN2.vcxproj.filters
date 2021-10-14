@@ -51,5 +51,8 @@
     <MASM Include="P36_UsoVariables_parte2.asm" />
     <MASM Include="P37_DetenerCicloUsuario.asm" />
     <MASM Include="P38_SwitchCaseSimulado.asm" />
+    <MASM Include="T23_Npares.asm" />
+    <MASM Include="T24_drmanhattan.asm" />
+    <MASM Include="T25_numbin_a_dec.asm" />
   </ItemGroup>
 </Project>
