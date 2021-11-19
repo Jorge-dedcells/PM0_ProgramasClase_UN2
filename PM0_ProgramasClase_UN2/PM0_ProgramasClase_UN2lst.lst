@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/13/21 19:42:47
+Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/26/21 17:31:11
 T25_numbin_a_dec.asm					     Page 1 - 1
 
 
@@ -70,36 +70,34 @@ T25_numbin_a_dec.asm					     Page 1 - 1
 				
 				
  00000017			 ciclo:
- 00000017  E8 00000000 E	    call crlf
- 0000001C  B8 00000000		     mov eax, 0
- 00000021  8B F9		     mov edi, ecx
- 00000023  8A 81 00000000 R	     mov al,arr[ecx]
+ 00000017  B8 00000000		     mov eax, 0
+ 0000001C  8B F9		     mov edi, ecx
+ 0000001E  8A 81 00000000 R	     mov al,arr[ecx]
 				
- 00000029  0F B6 C0		     movzx eax, al
- 0000002C  83 E8 30		     sub eax, 48
- 0000002F  50			     push eax
- 00000030  8B F9		     mov edi, ecx
- 00000032  A1 0000003D R	     mov eax, sec2
- 00000037  F7 E3		     mul ebx
- 00000039  A3 0000003D R	     mov sec2, eax
+ 00000024  0F B6 C0		     movzx eax, al
+ 00000027  83 E8 30		     sub eax, 48
+ 0000002A  50			     push eax
+ 0000002B  A1 0000003D R	     mov eax, sec2
+ 00000030  F7 E3		     mul ebx
+ 00000032  A3 0000003D R	     mov sec2, eax
 				
- 0000003E  58			     pop eax
- 0000003F  F7 25 0000003D R	     mul sec2
- 00000045  01 05 00000039 R	     add total, eax
+ 00000037  58			     pop eax
+ 00000038  F7 25 0000003D R	     mul sec2
+ 0000003E  01 05 00000039 R	     add total, eax
 				
- 0000004B  8B CF		     mov ecx, edi
- 0000004D  49			     dec ecx
- 0000004E  BB 00000002		     mov ebx, 2
+ 00000044  8B CF		     mov ecx, edi
+ 00000046  49			     dec ecx
+ 00000047  BB 00000002		     mov ebx, 2
 				     
- 00000053  83 F9 FF		     cmp ecx, -1
- 00000056  7F BF		     jg ciclo
+ 0000004C  83 F9 FF		     cmp ecx, -1
+ 0000004F  7F C6		     jg ciclo
 				
 				
 				
- 00000058  BA 00000022 R	  mov edx, offset mensaje2
- 0000005D  E8 00000000 E	  call writestring
- 00000062  A1 00000039 R	  mov eax, total
- 00000067  E8 00000000 E	  call writedec
+ 00000051  BA 00000022 R	  mov edx, offset mensaje2
+ 00000056  E8 00000000 E	  call writestring
+ 0000005B  A1 00000039 R	  mov eax, total
+ 00000060  E8 00000000 E	  call writedec
 				
 				
 				
@@ -108,9 +106,9 @@ T25_numbin_a_dec.asm					     Page 1 - 1
 				
 				
 				exit
- 00000073			bin ENDP
+ 0000006C			bin ENDP
 				END bin
-Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/13/21 19:42:47
+Microsoft (R) Macro Assembler Version 14.29.30133.0	    10/26/21 17:31:11
 T25_numbin_a_dec.asm					     Symbols 2 - 1
 
 
@@ -205,7 +203,7 @@ Segments and Groups:
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
 _DATA  . . . . . . . . . . . . .	32 Bit	 00000041 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000073 Para	  Public  'CODE'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000006C Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -312,7 +310,7 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-bin  . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000073 Public STDCALL
+bin  . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000006C Public STDCALL
   ciclo  . . . . . . . . . . . .	L Near	 00000017 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
